@@ -63,7 +63,7 @@ public class Shuffler {
 
         /**
          * Split values into two halves
-         * If values.lenth is odd, increase the size of half1 by 1
+         * If values.length is odd, increase the size of half1 by 1
          * If index is even, copy from half1
          * If index is odd, copy from half2
          * If values.length is odd, add the last term to the first array
@@ -129,6 +129,5 @@ public class Shuffler {
         for (int i = 0; i < values.length; i++){
             values[i] = shuffledArray[i];
         }
-
     }
 }

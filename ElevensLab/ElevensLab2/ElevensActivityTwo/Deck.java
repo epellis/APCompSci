@@ -54,9 +54,7 @@ public class Deck {
             return true;
         }
         else
-        {
             return false;
-        }
     }
 
     /**
