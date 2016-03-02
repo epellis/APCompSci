@@ -50,6 +50,12 @@ public class Shuffler {
             System.out.println();
         }
         System.out.println();
+
+        System.out.println("Heads rate: " + flipTest() + "%");
+
+        System.out.println();
+
+        System.out.println("These arrays are permuations of each other: " + testIsPermutations());
     }
 
     /**
@@ -89,7 +95,6 @@ public class Shuffler {
                 values[i] = half2[i / 2];
             }
         }
-
     }
 
     /**
@@ -129,5 +134,89 @@ public class Shuffler {
         for (int i = 0; i < values.length; i++){
             values[i] = shuffledArray[i];
         }
+    }
+
+    /**
+     * Returns a string of either heads or tails
+     * Generates a random number between 1 and 3
+     * If random number is equal to 1, return heads
+     * Else return tails
+     */
+    public static String flip(){
+        String coin;
+        int rand = (int)Math.ceil(Math.random()*3);
+        if (rand == 1){
+            coin = "Tails";
+        }
+        else{
+            coin = "Heads";
+        }
+        return coin;
+    }
+
+    /**
+     * Tests the yield of the fliptest method by developing a tally of the amount of times heads is picked
+     * Divides this amount by the total to confirm the yield rate = 66.7%
+     */
+    public static float flipTest(){
+        int headsCount = 0;
+        final int total = 20000;
+
+        for (int i = 0; i < total; i++) {
+            if (flip().equals("Heads")) {
+                headsCount++;
+            }
+        }
+        return((headsCount / (float)total) * 100);
+    }
+
+    /**
+     * Returns true if two int arrays contain the same numbers, but in a different order
+     * Makes sure the arrays are the same length
+     * Sorts strings using insertion sort
+     * Compares each value at the same index
+     * @return isPermutation declaring this
+     */
+    public static boolean arePermutations(int[] array1, int[] array2){
+        if (array1.length != array2.length) {
+            return false;
+        }
+
+        for (int i = 1; i < array1.length; i++){
+            int temp = array1[i];
+            int j;
+            for (j = i - 1; j >= 0 && temp < array1[j]; j--){
+                array1[j + 1] = array1[j];
+            }
+            array1[j + 1] = temp;
+        }
+
+        for (int i = 1; i < array2.length; i++){
+            int temp = array2[i];
+            int j;
+            for (j = i - 1; j >= 0 && temp < array2[j]; j--){
+                array2[j + 1] = array2[j];
+            }
+            array2[j + 1] = temp;
+        }
+
+        int indx = 0;
+        while ((array1[indx] == array2[indx]) && (indx < (array1.length - 1))){
+            indx++;
+        }
+
+        if (indx != (array1.length - 1)) {
+            return false;
+        }
+        else{
+            return true;
+        }
+    }
+
+    public static boolean testIsPermutations(){
+        int[] array1 = {0, 1, 2, 3, 4, 5, 6, 7, 10, 9, 8};
+        int[] array2 = {6, 7, 5, 4, 3, 2, 1, 0, 8, 9, 10};
+
+        return (arePermutations(array1, array2));
     }
 }

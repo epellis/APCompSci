@@ -8,36 +8,34 @@ public class Card {
     /**
      * String value that holds the suit of the card
      */
-    private String suit;
+    private String rank;
 
     /**
      * String value that holds the rank of the card
      */
-    private String rank;
+    private String suit;
 
     /**
      * int value that holds the point value.
      */
     private int pointValue;
 
-
     /**
      * Constructor that creates a new <code>Card</code> instance.
      *
-     * @param rank  a <code>String</code> value
+     * @param rankVal  a <code>String</code> value
      *                  containing the rank of the card
-     * @param suit  a <code>String</code> value
+     * @param suitVal  a <code>String</code> value
      *                  containing the suit of the card
-     * @param pointValue an <code>int</code> value
+     * @param pointTotal an <code>int</code> value
      *                  containing the point value of the card
      */
-    public Card(String rank, String suit, int pointValue) {
+    public Card(String rankVal, String suitVal, int pointTotal) {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 1 *** */
-        this.rank = rank;
-        this.suit = suit;
-        this.pointValue = pointValue;
+        rank = rankVal;
+        suit = suitVal;
+        pointValue = pointTotal;
     }
-
 
     /**
      * Accesses this <code>Card's</code> suit.
@@ -74,12 +72,7 @@ public class Card {
      */
     public boolean matches(Card otherCard) {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 1 *** */
-        if (pointValue == otherCard.pointValue) {
-            return true;
-        }
-        else {
-            return false;
-        }
+        return pointValue == otherCard.pointValue && suit.equals(otherCard.suit) && rank.equals(otherCard.rank);
     }
 
     /**
@@ -88,7 +81,6 @@ public class Card {
      * This provides a useful way of printing the contents
      * of a <code>Deck</code> in an easily readable format or performing
      * other similar functions.
-     *
      * @return a <code>String</code> containing the rank, suit,
      *         and point value of the card.
      */
