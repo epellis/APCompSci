@@ -1,4 +1,4 @@
 # APCompSci
 "Sneaky Deaky Like" -Lewis
 
-Hit me up if you want to be added on this repo and make sure to check out the wiki!
+If you are in Lovett's 2016 - 2017 APCS class and would like to be added to this document message me or anthonyrom
